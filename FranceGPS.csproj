@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.19" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
+    <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="5.13.0" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\" />
+    <None Remove="src\MessageBus\" />
+
+    <None Remove="Assets\" />
+    <None Remove="Styles\" />
+
+    <None Remove="Views\" />
+    <None Remove="Views\Home\" />
+    
+    <None Remove="Assets\Images\carte.png" />
+    <None Remove="Assets\Images\carteU.png" />
+    <None Remove="src\Graphe\" />
+    <None Remove="Assets\Images\carteUP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Styles\" />
+
+    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="src\MessageBus\" />
+    <Folder Include="src\Graphe\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\Images\carte.png" />
+    <AvaloniaResource Include="Assets\Images\carteU.png" />
+    <AvaloniaResource Include="Views\Plan\PlanView.axaml">
+      <SubType>Designer</SubType>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Assets\Images\carteUP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaXaml Remove="Components\Carte.axaml" />
+    <AvaloniaXaml Remove="Views\Plan\PlanView.axaml" />
+  </ItemGroup>
+</Project>

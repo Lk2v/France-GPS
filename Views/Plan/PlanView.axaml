@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FranceGPS.Views.PlanView"
+
+            xmlns:components="clr-namespace:FranceGPS.Components"
+            xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+>
+    
+    <Grid Background="{DynamicResource Sea}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Panel Grid.Row="1" Margin="10">
+
+            <Button Classes="translucid" Command="{Binding GoHome}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <i:Icon FontSize="20" Value="fa-solid fa-chevron-left"/>
+                    <TextBlock Classes="bold" Text="Retour" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Items="{Binding ListeVilles}" SelectedItem="{Binding VilleSelectionnerDepart}" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <i:Icon Value="fa-arrow-right-arrow-left" Height="42" Grid.Column="0" VerticalAlignment="Center" Margin="12,0"/>
+            
+                <ComboBox Items="{Binding ListeVilles}" SelectedItem="{Binding VilleSelectionnerArrivee}" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <ComboBox SelectedIndex="{Binding OptionChoisit}" HorizontalAlignment="Right">
+                <ComboBoxItem>Durée</ComboBoxItem>
+                <ComboBoxItem>Distance</ComboBoxItem>
+            </ComboBox>
+
+        </Panel>
+        <Border Grid.Row="2" Padding="15">
+            <Panel>
+
+                <Viewbox Stretch="Uniform">
+                    <Panel>
+                        <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="/Assets/Images/carteUP.png"/>
+                        <components:Carte
+                            Villes="{Binding ListeVilles}"
+                            Routes="{Binding RoutesItineraire.Chemin}"
+                            VillesSelectionner="{Binding ListeVillesSelec}"
+                        />
+                    </Panel>
+                </Viewbox>
+
+                <StackPanel Margin="15,0" HorizontalAlignment="Right">
+                    <TextBlock Classes="h1" Text="{Binding RoutesItineraire.Distance, StringFormat={}{0} km}" TextAlignment="Right" />
+                    <TextBlock Classes="h3" Text="{Binding RoutesItineraire.DureeFormat}" TextAlignment="Right" />
+                    
+                </StackPanel>
+            </Panel>
+        </Border>
+    </Grid>
+</UserControl>

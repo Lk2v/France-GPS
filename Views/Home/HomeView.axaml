@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FranceGPS.Views.HomeView"
+             xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+
+             xmlns:mb="clr-namespace:FranceGPS.src.MessageBus"
+             xmlns:components="clr-namespace:FranceGPS.Components"
+>
+    <Panel>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <i:Icon FontSize="60" Value="fa-solid fa-location-dot" VerticalAlignment="Center" Margin="0,0,15,0"/>
+            <TextBlock FontSize="40" FontWeight="Bold" Text="France GPS" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 25" Spacing="12">
+            <components:NavButton Title="Itinéraire" Icon="fa-route" HorizontalAlignment="Center" Command="{Binding Navigation}" CommandParameter="{x:Static mb:WindowViews.Map}"/>
+            <components:NavButton Title="Distance"  Icon="fa-road" HorizontalAlignment="Center" Command="{Binding Navigation}" CommandParameter="{x:Static mb:WindowViews.Distances}"/>
+            <components:NavButton Title="Connexes"  Icon="fa-connectdevelop" HorizontalAlignment="Center" Command="{Binding Navigation}" CommandParameter="{x:Static mb:WindowViews.Connexe}"/>
+            <components:NavButton Title="Adjacent"  Icon="fa-arrows-left-right-to-line" HorizontalAlignment="Center" Command="{Binding Navigation}" CommandParameter="{x:Static mb:WindowViews.Adjacent}"/>
+        </StackPanel>
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" Margin="0,30" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <TextBlock Classes="secondary" Text="OLIVIER-CONDAT, SAADOUN, MIAKINEN"/>
+    </StackPanel>
+
+    </Panel>
+</UserControl>

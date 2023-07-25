@@ -1,0 +1,52 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FranceGPS.Components"
+
+        xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+>
+
+    <Design.PreviewWith>
+        <controls:NavButton />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|NavButton Button">
+        <Setter Property="Background" Value="Transparent"></Setter>
+    </Style>
+
+    <Style Selector="controls|NavButton Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#10FFFFFF" />
+    </Style>
+
+    <Style Selector="controls|NavButton Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#3074c0fc" />
+        <Setter Property="RenderTransform" Value="scale(0.95)" />
+    </Style>
+
+    <Style Selector="controls|NavButton">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Margin="10,5,10,5">
+                    <Button Classes="translucid" Command="{TemplateBinding Command}" CornerRadius="18" CommandParameter="{TemplateBinding CommandParameter}"> <!-- BEFORE RelativeSource={RelativeSource Self}}-->
+                        <Border Height="100" Width="100" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+    
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <i:Icon Value="{TemplateBinding Icon}" FontSize="42" Grid.Row="0" Grid.Column="0"/>
+
+                                <TextBlock Text="{TemplateBinding Title}" Grid.Row="1" Grid.Column="0" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap"/>
+                            </Grid>
+                        </Border>
+                    </Button>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

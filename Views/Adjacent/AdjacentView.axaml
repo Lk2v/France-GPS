@@ -1,0 +1,82 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FranceGPS.Views.AdjacentView"
+
+            xmlns:components="clr-namespace:FranceGPS.Components"
+            xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+>
+    
+    <Grid Background="{DynamicResource Sea}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Panel Grid.Row="0" Margin="10">
+
+            <Button Classes="translucid" Command="{Binding GoHome}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <i:Icon FontSize="20" Value="fa-solid fa-chevron-left"/>
+                    <TextBlock Classes="bold" Text="Retour" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Panel HorizontalAlignment="Center" IsVisible="{Binding AfficherMessage}">
+                <Border Background="Green" CornerRadius="8" IsVisible="{Binding ResultatAdjacent}" Padding="20,8">
+                    <TextBlock Text="Les sommets sont adjacent"/>
+                </Border>
+
+                <Border Background="Red" CornerRadius="8" IsVisible="{Binding !ResultatAdjacent}" Padding="20,8">
+                    <TextBlock Text="Les sommets ne sont pas adjacent"/>
+                </Border>
+            </Panel>
+        </Panel>
+        <Border Grid.Row="1" Padding="15">
+            <Panel>
+                
+                <Viewbox Stretch="Uniform">
+                    <Panel>
+                        <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="/Assets/Images/carteUP.png"/>
+                        <components:Carte
+                            Villes="{Binding ListeVilles}"
+                            Routes="{Binding ListeRoutes}"
+                            VillesSelectionner="{Binding Selections}"
+                            VilleCommand="{Binding SelectionnerVille}"
+                        />
+                    </Panel>
+                </Viewbox>
+
+                <Grid HorizontalAlignment="Right">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="1">
+                        <ItemsControl Background="Transparent" Items="{Binding CollectionVilles}">
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button HorizontalAlignment="Stretch" Classes="translucid" Command="{Binding DataContext.SelectionnerVille, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Width="22" Height="22" VerticalAlignment="Center" Margin="0,0,12,0">
+                                                <Border Background="White" CornerRadius="8" IsVisible="{Binding EstSelectionner}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <i:Icon FontSize="16" Foreground="{DynamicResource Sea}" Value="fa-solid fa-check" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </Border>
+
+                                            <TextBlock Text="{Binding Nom}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Panel>
+        </Border>
+    </Grid>
+</UserControl>

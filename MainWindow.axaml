@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FranceGPS.MainWindow"
+        Title="FranceGPS"
+
+        xmlns:app="clr-namespace:FranceGPS"
+
+        xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
+
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+
+        ExtendClientAreaToDecorationsHint="True"
+>
+    <Panel>
+           <ExperimentalAcrylicBorder IsHitTestVisible="False">
+               <ExperimentalAcrylicBorder.Material>
+                   <ExperimentalAcrylicMaterial
+                       BackgroundSource="Digger"
+                       TintColor="Black"
+                       TintOpacity="1"
+                       MaterialOpacity="0.65" />
+               </ExperimentalAcrylicBorder.Material>
+           </ExperimentalAcrylicBorder>
+
+
+            <!--CONTENU-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Height="28" Background="{DynamicResource Sea}" IsHitTestVisible="False"/>
+                <Panel Grid.Row="1" Background="{DynamicResource Sea}" >
+                    <rxui:RoutedViewHost Router="{Binding Router}" > <!--PageTransition="{x:Null}"-->
+                        <rxui:RoutedViewHost.ViewLocator>
+                            <!-- See AppViewLocator.cs section below -->
+                            <app:AppViewLocator />
+                        </rxui:RoutedViewHost.ViewLocator>
+                    </rxui:RoutedViewHost>
+                </Panel>
+                
+            </Grid>
+            
+       </Panel>
+</Window>

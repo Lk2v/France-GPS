@@ -1,0 +1,22 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="FranceGPS.App">
+
+    <Application.Styles>
+        <FluentTheme Mode="Dark"/>
+
+        <StyleInclude Source="/Styles/Default.axaml"></StyleInclude>
+        <StyleInclude Source="/Components/NavButton.axaml"></StyleInclude>
+    </Application.Styles>
+
+
+    <Application.Resources>
+
+        <SolidColorBrush x:Key="Sea">#243576</SolidColorBrush>
+        <SolidColorBrush x:Key="Blue">#0A84FF</SolidColorBrush>
+        <SolidColorBrush x:Key="Red">#FF2D55</SolidColorBrush>
+
+        <!---->
+    </Application.Resources>
+
+</Application>
