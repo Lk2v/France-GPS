@@ -1,6 +1,6 @@
 # France-GPS
 
-Projet étudiant d'affichage d'itinéraire entre deux villes ainsi que divers autre statistique via le principe de théorie des graphes. 
+Projet étudiant d'affichage d'itinéraire entre deux villes ainsi que diverses autres statistiques via le principe de la théorie des graphes.
 
 ## Screenshot
 
