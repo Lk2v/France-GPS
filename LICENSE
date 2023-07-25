@@ -1,6 +1,6 @@
-MIT License
+MIT License with Attribution Clause and Request for Permission
 
-Copyright (c) 2023 Lk
+Copyright (c) 2023 Lucas Miakinen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11,6 +11,16 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+Attribution Notice:
+
+If you use this Software in your projects, you must give appropriate credit by providing:
+- A visible and prominent link to the original repository on GitHub: [Link to the repository]
+- Your project must explicitly state that you have modified the original Software.
+
+Request for Permission:
+
+Before using this Software in any commercial or closed-source project, please contact lucas.miakinen@icloud.com to request permission.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
